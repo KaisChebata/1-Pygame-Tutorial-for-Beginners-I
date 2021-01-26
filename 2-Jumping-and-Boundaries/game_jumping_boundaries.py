@@ -4,11 +4,13 @@ import pygame
 pygame.init()
 
 # set game widow & caption
-window = pygame.display.set_mode((500, 500))
+screen_width = 500
+screen_height = 500
+window = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('First Game')
 
 # set position, height, width, and velocity
-x, y = 50, 440
+x, y = 50, 425
 width, height = 40, 60
 vel = 5
 
@@ -25,13 +27,13 @@ while run:
     keys = pygame.key.get_pressed()
 
     # test which key pressed to make moves
-    if keys[pygame.K_LEFT]:
+    if keys[pygame.K_LEFT] and x > vel:
         x -= vel
-    if keys[pygame.K_RIGHT]:
+    if keys[pygame.K_RIGHT] and x < screen_width - width - vel:
         x += vel
-    if keys[pygame.K_UP]:
+    if keys[pygame.K_UP] and y > vel:
         y -= vel
-    if keys[pygame.K_DOWN]:
+    if keys[pygame.K_DOWN] and y < screen_height - height - vel:
         y += vel
     
     window.fill((0, 0, 0))
