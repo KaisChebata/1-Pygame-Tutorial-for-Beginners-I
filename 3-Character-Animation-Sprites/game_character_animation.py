@@ -2,6 +2,9 @@ import pygame
 
 pygame.init()
 
+# set game clock
+clock = pygame.time.Clock()
+
 # set size of window game, caption, and background
 screen_width = 500
 screen_height = 480
@@ -10,7 +13,7 @@ pygame.display.set_caption('First Game')
 background = pygame.image.load('raw_media/bg.jpg')
 
 # character position, width, height, imgs, and velocity
-x, y = 50, 425
+x, y = 50, 400
 width, height = 64, 64
 velo = 5
 
@@ -48,16 +51,17 @@ def redraw_game_window():
     global walk_counter
     window.blit(background, (0, 0))
     
-    # we will make the max of walk_count is 27 as each list of walk_left list 
+    # we will make the max of walk_count is 27 as each list of walk_left 
     # and walk_right has 9 imgs for a list 
     # and we'll display each sprite for 3 frame
     if walk_counter + 1 >= 27:
         walk_counter = 0
+        
+    if left:
+        window.blit(walk_left[walk_counter//3], (x, y))
+        walk_counter += 1
     elif right:
         window.blit(walk_right[walk_counter//3], (x, y))
-        walk_counter += 1
-    elif left:
-        window.blit(walk_left[walk_counter//3], (x, y))
         walk_counter += 1
     else:
         window.blit(char, (x, y))
@@ -67,8 +71,9 @@ def redraw_game_window():
 # set up main loop
 run = True
 while run:
-    pygame.time.delay(50)
-
+    # set up frame rate
+    clock.tick(27)
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
@@ -107,6 +112,7 @@ while run:
         else:
             is_jump = False
             jump_volume = 10
+    
     # draw window & character
     redraw_game_window()
 
