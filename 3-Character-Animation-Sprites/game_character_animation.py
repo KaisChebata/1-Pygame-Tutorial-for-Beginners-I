@@ -100,7 +100,7 @@ while run:
         if keys[pygame.K_SPACE]:
             is_jump = True
             right = False
-            right = False
+            left = False
             walk_counter = 0
     else:
         if jump_volume >= -10:
