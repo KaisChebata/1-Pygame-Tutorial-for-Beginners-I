@@ -21,21 +21,23 @@ class SuperSprite:
         self.background = pygame.image.load(self.settings.background_path)
     
     def run_game(self):
-        """Start the main loop of the game"""
+        """Start the main loop of the game."""
         while True:
-            # watch for keyboard and mouse events
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
-            
-            # Redraw the screen.
-            self.window.blit(self.background, (0, 0))
+            self._check_events()
+            self._update_screen()
 
-            # draw the sprite character
-            self.sprite.draw()
+    def _check_events(self):
+        """Response to Keypresses and mouse events."""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+    
+    def _update_screen(self):
+        """Update images on the screen, and flip (update) to the new screen."""
+        self.window.blit(self.background, (0, 0))
+        self.sprite.draw()
 
-            # Make the most recently drawn screen visible. 
-            pygame.display.flip()
+        pygame.display.flip()
 
 if __name__ == '__main__':
     # Make a game instance, and run the game
