@@ -12,15 +12,17 @@ class Player:
         self.window_rect = sprite_game.window.get_rect()
         self.image = pygame.image.load('raw_media/standing.png')
         self.rect = self.image.get_rect()
+        self.rect.bottomleft = self.window_rect.bottomleft
         # self.x = x
         # self.y = y
         # self.width = width
         # self.height = height
         self.vel = 5
         self.is_jump = False
-        self.left = False
-        self.right = False
         self.jump_volume = 10
+        # movement flags
+        self.moving_right = False
+        self.moving_left = False
         self.walk_counter = 0
 
         # walk right list imgs
@@ -48,9 +50,14 @@ class Player:
             pygame.image.load('raw_media/L8.png'), 
             pygame.image.load('raw_media/L9.png')
         ]
-        
-        self.rect.bottomleft = self.window_rect.bottomleft
-
+    
+    def update(self):
+        """Update the sprite's position based on the movement flags"""
+        if self.moving_right:
+            self.rect.x += 1
+        if self.moving_left:
+            self.rect.x -= 1
+    
     def draw(self):
         """Draw the Character at its current location"""
         self.window.blit(self.image, self.rect)
