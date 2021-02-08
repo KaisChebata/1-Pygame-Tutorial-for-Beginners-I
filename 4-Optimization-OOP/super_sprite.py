@@ -24,6 +24,7 @@ class SuperSprite:
         """Start the main loop of the game."""
         while True:
             self._check_events()
+            self.sprite.update()
             self._update_screen()
 
     def _check_events(self):
@@ -31,6 +32,18 @@ class SuperSprite:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.sprite.moving_right = True
+                elif event.key == pygame.K_LEFT:
+                    self.sprite.moving_left = True
+
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    self.sprite.moving_right = False
+                elif event.key == pygame.K_LEFT:
+                    self.sprite.moving_left = False
     
     def _update_screen(self):
         """Update images on the screen, and flip (update) to the new screen."""
