@@ -13,7 +13,8 @@ class Player:
         self.image = pygame.image.load('raw_media/standing.png')
         self.rect = self.image.get_rect()
         self.rect.bottomleft = self.window_rect.bottomleft
-        # self.x = x
+        self.settings = sprite_game.settings
+        self.x = float(self.rect.x)
         # self.y = y
         # self.width = width
         # self.height = height
@@ -54,9 +55,12 @@ class Player:
     def update(self):
         """Update the sprite's position based on the movement flags"""
         if self.moving_right:
-            self.rect.x += 1
+            self.x += self.settings.sprite_speed
         if self.moving_left:
-            self.rect.x -= 1
+            self.x -= self.settings.sprite_speed
+        
+        # update rect object from self.x
+        self.rect.x = self.x
     
     def draw(self):
         """Draw the Character at its current location"""
