@@ -5,7 +5,9 @@ class Settings:
     def __init__(self):
         """Initialize the game's settings."""
         #Screen Settings
-
         self.screen_width = 500
         self.screen_height = 480
         self.background_path = 'raw_media/bg.jpg'
+
+        # sprite settings
+        self.sprite_speed = 1.5
