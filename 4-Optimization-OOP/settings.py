@@ -9,5 +9,11 @@ class Settings:
         self.screen_height = 480
         self.background_path = 'raw_media/bg.jpg'
 
-        # sprite settings
+        # Sprite settings
         self.sprite_speed = 1.5
+
+        # Bullet settings
+        self.bullet_speed = 1.0
+        self.bullet_width = 3
+        self.bullet_height = 15
+        self.bullet_color = (60, 60, 60)
