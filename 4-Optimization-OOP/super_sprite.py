@@ -19,7 +19,7 @@ class SuperSprite:
         pygame.display.set_caption('Super Sprite')
         self.sprite = Player(self)
         self.background = pygame.image.load(self.settings.background_path)
-    
+
     def run_game(self):
         """Start the main loop of the game."""
         while True:
@@ -34,16 +34,23 @@ class SuperSprite:
                 sys.exit()
 
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
-                    self.sprite.moving_right = True
-                elif event.key == pygame.K_LEFT:
-                    self.sprite.moving_left = True
-
+                self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_RIGHT:
-                    self.sprite.moving_right = False
-                elif event.key == pygame.K_LEFT:
-                    self.sprite.moving_left = False
+                self._check_keyup_events(event)
+    
+    def _check_keydown_events(self, event):
+        """Respond to Keypresses"""
+        if event.key == pygame.K_RIGHT:
+            self.sprite.moving_right = True
+        elif event.key == pygame.K_LEFT:
+            self.sprite.moving_left = True
+    
+    def _check_keyup_events(self, event):
+        """Respond to Keypresses"""
+        if event.key == pygame.K_RIGHT:
+            self.sprite.moving_right = False
+        elif event.key == pygame.K_LEFT:
+            self.sprite.moving_left = False
     
     def _update_screen(self):
         """Update images on the screen, and flip (update) to the new screen."""
