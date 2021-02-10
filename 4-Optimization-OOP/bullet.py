@@ -19,4 +19,14 @@ class Bullet(Sprite):
         # store the bullet's as a decimal value.
         self.y = float(self.rect.y)
     
+    def update(self):
+        """Move Bullet up the screen."""
+        # Update the decimal postion of the bullet.
+        self.y -= self.settings.bullet_speed
+
+        # update the rect position
+        self.rect.y = self.y
     
+    def draw_bullet(self):
+        """Draw the Bullet to the screen"""
+        pygame.draw.rect(self.window, self.color, self.rect)
