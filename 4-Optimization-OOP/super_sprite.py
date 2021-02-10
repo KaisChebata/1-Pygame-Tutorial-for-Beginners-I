@@ -16,6 +16,10 @@ class SuperSprite:
         self.window = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height)
             )
+        # Running game in full screen mode
+        # self.window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        # self.settings.screen_width = self.window.get_rect().width
+        # self.settings.screen_height = self.window.get_rect().height
         pygame.display.set_caption('Super Sprite')
         self.sprite = Player(self)
         self.background = pygame.image.load(self.settings.background_path)
@@ -44,6 +48,8 @@ class SuperSprite:
             self.sprite.moving_right = True
         elif event.key == pygame.K_LEFT:
             self.sprite.moving_left = True
+        elif event.key == pygame.K_q:
+            sys.exit()
     
     def _check_keyup_events(self, event):
         """Respond to Keypresses"""
