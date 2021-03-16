@@ -30,8 +30,16 @@ GRAY = (150, 150, 150)
 
 pygame.init()
 screen = pygame.display.set_mode(SIZE)
+pygame.display.set_caption('Virtual attributes')
 
 rect = Rect(50, 60, 200, 80)
+blue_rect = Rect(300, 60, 150, 80)
+print(f'Red rect attributes: {rect}')
+print(f'x = {rect.x}, y = {rect.y}, w = {rect.w}, h = {rect.h}')
+print(f'left = {rect.left}, top = {rect.top}, right = {rect.right}, '
+      f'bottom = {rect.bottom}')
+print(f'height = {rect.height}, width = {rect.width}')
+print(f'center = {rect.center}')
 
 running = True
 while running:
@@ -40,6 +48,7 @@ while running:
             running = False
     screen.fill(GRAY)
     pygame.draw.rect(screen, RED, rect)
+    pygame.draw.rect(screen, (0, 0, 255), blue_rect)
     pygame.display.flip()
 
 
