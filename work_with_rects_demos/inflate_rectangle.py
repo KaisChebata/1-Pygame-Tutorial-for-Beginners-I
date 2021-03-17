@@ -1,27 +1,9 @@
-import pygame
-from pygame.locals import *
+from rect import *
 
-width = 500
-height = 200
-SIZE = (width, height)
-
-RED = (255, 0, 0)
-BLUE = (0, 0, 255)
-GRAY = (150, 150, 150)
-
-dir = {
-    K_LEFT: (-5, 0), K_RIGHT: (5, 0), 
-    K_UP: (0, -5), K_DOWN: (0, 5)}
-
-pygame.init()
-
-screen = pygame.display.set_mode(SIZE)
 pygame.display.set_caption('Inflate a rectangle')
 
 rect0 = Rect(50, 60, 200, 80)
 rect = rect0.copy()
-
-running = True
 
 while running:
     for event in pygame.event.get():

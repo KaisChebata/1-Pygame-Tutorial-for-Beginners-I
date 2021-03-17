@@ -1,5 +1,4 @@
-import pygame
-from pygame.locals import *
+from rect import *
 
 """
 The method r0.clip(r1) returns a new rectangle which is the intersection 
@@ -12,28 +11,9 @@ The green rectangle is the clipped area (intersection).
 The yellow rectangle is the union of the two rectangles.
 """
 
-width = 500
-heigth = 200
-SIZE = (width, heigth)
-
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
-
-YELLOW = (255, 255, 0)
-GRAY = (150, 150, 150)
-
-dir = {
-    K_LEFT: (-5, 0), K_RIGHT: (5, 0), 
-    K_UP: (0, -5), K_DOWN: (0, 5)}
-
-pygame.init()
-screen = pygame.display.set_mode(SIZE)
-
 r0 = Rect(50, 60, 200, 80)
 r1 = Rect(100, 20, 100, 140)
 
-running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

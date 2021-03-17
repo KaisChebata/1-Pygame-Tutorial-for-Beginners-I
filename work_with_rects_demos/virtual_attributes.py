@@ -1,5 +1,4 @@
-import pygame
-from pygame.locals import *
+from rect import *
 
 """
 A Rect object can be created by giving:
@@ -24,12 +23,6 @@ Rect(obj)
       * size, width, height, w, h
 """
 
-SIZE = 500, 200
-RED = (255, 0, 0)
-GRAY = (150, 150, 150)
-
-pygame.init()
-screen = pygame.display.set_mode(SIZE)
 pygame.display.set_caption('Virtual attributes')
 
 rect = Rect(50, 60, 200, 80)
@@ -41,7 +34,7 @@ print(f'left = {rect.left}, top = {rect.top}, right = {rect.right}, '
 print(f'height = {rect.height}, width = {rect.width}')
 print(f'center = {rect.center}')
 
-running = True
+# running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

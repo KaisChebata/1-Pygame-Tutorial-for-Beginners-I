@@ -1,5 +1,4 @@
-import pygame
-from pygame.locals import *
+from rect import *
 
 """
 - The function rect.collidepoint(pos) returns True 
@@ -14,21 +13,10 @@ from pygame.locals import *
   While the rectangle is moving, we add a blue outline.
 """
 
-width, height = 500, 200
-SIZE = (width, height)
-
-RED = (255, 0, 0)
-BLUE = (0, 0, 255)
-GRAY = (150, 150, 150)
-
-pygame.init()
-
-screen = pygame.display.set_mode(SIZE)
 pygame.display.set_caption('Move rect with mouse')
 
 rect = Rect(50, 60, 200, 80)
 moving = False
-running = True
 
 while running:
     for event in pygame.event.get():
