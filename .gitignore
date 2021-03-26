@@ -140,5 +140,5 @@ cython_debug/
 # vscode project setting
 .vscode/
 
-# .gitignore file
+# gitignore file
 .gitignore
