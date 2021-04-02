@@ -64,4 +64,14 @@ class Player:
     
     def draw(self):
         """Draw the Character at its current location"""
-        self.window.blit(self.image, self.rect)
+        if self.walk_counter + 1 >= 27:
+            self.walk_counter = 0
+        
+        if self.moving_right:
+            self.window.blit(self.walk_right[self.walk_counter//3], self.rect)
+            self.walk_counter += 1
+        elif self.moving_left:
+            self.window.blit(self.walk_left[self.walk_counter//3], self.rect)
+            self.walk_counter += 1
+        else:
+            self.window.blit(self.image, self.rect)
