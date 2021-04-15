@@ -13,6 +13,7 @@ class SuperSprite:
         pygame.init()
 
         self.settings = Settings()
+        self.clock = pygame.time.Clock()
         self.window = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height)
             )
@@ -27,6 +28,7 @@ class SuperSprite:
     def run_game(self):
         """Start the main loop of the game."""
         while True:
+            self.clock.tick(27)
             self._check_events()
             self.sprite.update()
             self._update_screen()

@@ -10,7 +10,7 @@ class Settings:
         self.background_path = 'raw_media/bg.jpg'
 
         # Sprite settings
-        self.sprite_speed = 1.5
+        self.sprite_speed = 5
 
         # Bullet settings
         self.bullet_speed = 1.0
