@@ -50,6 +50,8 @@ class SuperSprite:
             self.sprite.moving_right = True
         elif event.key == pygame.K_LEFT:
             self.sprite.moving_left = True
+        elif event.key == pygame.K_SPACE and not self.sprite.is_jump:
+            self.sprite.is_jump = True
         elif event.key == pygame.K_q:
             sys.exit()
     
