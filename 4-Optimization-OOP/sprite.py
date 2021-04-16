@@ -15,12 +15,13 @@ class Player:
         self.rect.bottomleft = self.window_rect.bottomleft
         self.settings = sprite_game.settings
         self.x = float(self.rect.x)
-        # self.y = y
+        self.y = float(self.rect.y)
         # self.width = width
         # self.height = height
         self.vel = 5
         self.is_jump = False
         self.jump_volume = 10
+        self.inverter = 1
         # movement flags
         self.moving_right = False
         self.moving_left = False
@@ -58,9 +59,12 @@ class Player:
             self.x += self.settings.sprite_speed
         if self.moving_left and self.rect.left > 0:
             self.x -= self.settings.sprite_speed
+        if self.is_jump:
+            self.jump()
         
         # update rect object from self.x
         self.rect.x = self.x
+        self.rect.y = self.y
     
     def draw(self):
         """Draw the Character at its current location"""
@@ -75,3 +79,15 @@ class Player:
             self.walk_counter += 1
         else:
             self.window.blit(self.image, self.rect)
+
+    def jump(self):
+        if self.jump_volume >= -10:
+            inverter = 1
+            if self.jump_volume < 0:
+                inverter = -1
+            self.y -= (self.jump_volume ** 2) * 0.5 * inverter
+            self.jump_volume -= 1
+        else:
+            self.is_jump = False
+            self.jump_volume = 10
+    
