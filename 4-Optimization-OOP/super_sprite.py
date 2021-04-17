@@ -35,6 +35,8 @@ class SuperSprite:
 
     def _check_events(self):
         """Response to Keypresses and mouse events."""
+        pressed_keys = pygame.key.get_pressed()
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -44,14 +46,17 @@ class SuperSprite:
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
     
+        if pressed_keys[pygame.K_SPACE] and not self.sprite.is_jump:
+            self.sprite.is_jump = True
+    
     def _check_keydown_events(self, event):
         """Respond to Keypresses"""
         if event.key == pygame.K_RIGHT:
             self.sprite.moving_right = True
         elif event.key == pygame.K_LEFT:
             self.sprite.moving_left = True
-        elif event.key == pygame.K_SPACE and not self.sprite.is_jump:
-            self.sprite.is_jump = True
+        # elif event.key == pygame.K_SPACE and not self.sprite.is_jump:
+        #     self.sprite.is_jump = True
         elif event.key == pygame.K_q:
             sys.exit()
     
