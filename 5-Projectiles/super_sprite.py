@@ -49,9 +49,11 @@ class SuperSprite:
             elif event.type == KEYUP:
                 self._check_keyup_events(event)
         
+        # detect jumping movement and make it continuous using 
+        # pygame.key.get_pressed() function
         if jumping_flag and not self.sprite.is_jump:
             self.sprite.is_jump = True
-            
+
     def _check_keydown_events(self, event):
         """Response to Keypresses."""
         if event.key == K_RIGHT:
