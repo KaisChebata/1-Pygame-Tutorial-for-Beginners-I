@@ -75,14 +75,32 @@ class Player:
         
     def draw(self):
         """Draw sprite at its current location."""
-        if self.walk_counter + 1 >= 27:
+        # if self.walk_counter + 1 >= 27:
+        #     self.walk_counter = 0
+        
+        # if self.moving_right:
+        #     self.screen.blit(self.walk_right[self.walk_counter//3], self.rect)
+        #     self.walk_counter += 1
+        # elif self.moving_left:
+        #     self.screen.blit(self.walk_left[self.walk_counter//3], self.rect)
+        #     self.walk_counter += 1
+        # else:
+        #     self.screen.blit(self.image, self.rect)
+        
+        if self.walk_counter >= self.anim_length:
             self.walk_counter = 0
         
         if self.moving_right:
-            self.screen.blit(self.walk_right[self.walk_counter//3], self.rect)
+            self.screen.blit(
+                self.walk_right[self.walk_counter % self.anim_length],
+                self.rect
+            )
             self.walk_counter += 1
         elif self.moving_left:
-            self.screen.blit(self.walk_left[self.walk_counter//3], self.rect)
+            self.screen.blit(
+                self.walk_left[self.walk_counter % self.anim_length],
+                self.rect
+            )
             self.walk_counter += 1
         else:
             self.screen.blit(self.image, self.rect)
