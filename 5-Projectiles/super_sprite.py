@@ -39,7 +39,7 @@ class SuperSprite:
     
     def _check_events(self):
         """Response to keypresses and mouse event."""
-        jumping_flag = pygame.key.get_pressed()[K_SPACE]
+        jumping_key = pygame.key.get_pressed()[K_SPACE]
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -51,8 +51,9 @@ class SuperSprite:
         
         # detect jumping movement and make it continuous using 
         # pygame.key.get_pressed() function
-        if jumping_flag and not self.sprite.is_jump:
+        if jumping_key and not self.sprite.is_jump:
             self.sprite.is_jump = True
+            self.sprite.walk_counter = 0
 
     def _check_keydown_events(self, event):
         """Response to Keypresses."""
@@ -69,6 +70,8 @@ class SuperSprite:
             self.sprite.moving_right = False
         elif event.key == K_LEFT:
             self.sprite.moving_left = False
+        elif event.key == K_SPACE:
+            self.sprite.is_jump = False
     
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
