@@ -59,8 +59,10 @@ class SuperSprite:
         """Response to Keypresses."""
         if event.key == K_RIGHT:
             self.sprite.moving_right = True
+            self.sprite.right_left_direction = True
         elif event.key == K_LEFT:
             self.sprite.moving_left = True
+            self.sprite.right_left_direction = False
         elif event.key == K_q:
             sys.exit()
     

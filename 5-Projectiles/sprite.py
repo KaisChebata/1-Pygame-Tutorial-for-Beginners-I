@@ -21,9 +21,10 @@ class Player:
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
 
-        # Movements flags, and walk counter
+        # Movements flags, direction and walk counter
         self.moving_right = False
         self.moving_left = False
+        self.right_left_direction = True
         self.walk_counter = 0
 
         # Jumping attributes
@@ -103,7 +104,12 @@ class Player:
             )
             self.walk_counter += 1
         else:
-            self.screen.blit(self.image, self.rect)
+            (
+                self.screen.blit(self.walk_right[0], self.rect)
+                if self.right_left_direction
+                else self.screen.blit(self.walk_left[0], self.rect)
+            )
+            # self.screen.blit(self.image, self.rect)
     
     def jump(self):
         inverter = 1
